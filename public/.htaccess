@@ -13,10 +13,23 @@
     RewriteCond %{HTTP:x-xsrf-token} .
     RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
 
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
+    # Host/scheme normalisation (http -> https, www -> non-www): intentionally
+    # NOT added here. This local XAMPP install's SSL vhost isn't configured
+    # for this domain (httpd-ssl.conf still has the placeholder ServerName),
+    # so forcing https in .htaccess would break local http:// testing without
+    # actually being verifiable as correct. Add this on the production host,
+    # once a real certificate is in place for the real domain:
+    #   RewriteCond %{HTTPS} off [OR]
+    #   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    #   RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+    #   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+    # NOTE: Laravel's default here was "redirect trailing slashes if not a
+    # folder" (R=301 with the slash stripped) — the opposite of this site's
+    # policy. That rule is intentionally removed: trailing slashes are
+    # added by App\Http\Middleware\EnsureTrailingSlash and
+    # App\Support\TrailingSlashUrlGenerator, not stripped by Apache. Leaving
+    # the old rule in would fight both of those and loop.
 
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d

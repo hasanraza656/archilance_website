@@ -32,6 +32,14 @@
     "sort": 4
   },
   {
+    "group": "general",
+    "key": "customer_portal",
+    "value": "/customer-portal/",
+    "type": "text",
+    "label": "Customer portal link (footer)",
+    "sort": 5
+  },
+  {
     "group": "contact",
     "key": "email",
     "value": "info@archilance.net",

@@ -11,20 +11,22 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [Front\PageController::class, 'home'])->name('home');
 
+// Index stays plural; the detail page moves to the singular /service/ folder
+// per the SEO spreadsheet ("Serve at /service/{slug}/").
 Route::get('/services', [Front\ServiceController::class, 'index'])->name('services.index');
-Route::get('/services/{service}', [Front\ServiceController::class, 'show'])->name('services.show');
+Route::get('/service/{service}', [Front\ServiceController::class, 'show'])->name('services.show');
 
 Route::get('/projects', [Front\ProjectController::class, 'index'])->name('projects.index');
-Route::get('/projects/{project}', [Front\ProjectController::class, 'show'])->name('projects.show');
+Route::get('/project/{project}', [Front\ProjectController::class, 'show'])->name('projects.show');
 
-Route::get('/pricing', [Front\PageController::class, 'pricing'])->name('pricing');
+Route::get('/pricing-plans', [Front\PageController::class, 'pricing'])->name('pricing');
 Route::get('/about-us', [Front\PageController::class, 'about'])->name('about');
 Route::get('/team/{member}', [Front\TeamController::class, 'show'])->name('team.show');
-Route::get('/faqs', [Front\PageController::class, 'faq'])->name('faq');
-Route::get('/contact', [Front\PageController::class, 'contact'])->name('contact');
+Route::get('/faq', [Front\PageController::class, 'faq'])->name('faq');
+Route::get('/contact-us', [Front\PageController::class, 'contact'])->name('contact');
+Route::get('/customer-portal', [Front\PageController::class, 'customerPortal'])->name('customer-portal');
 
-Route::get('/blog', [Front\BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{post}', [Front\BlogController::class, 'show'])->name('blog.show');
+Route::get('/blogs', [Front\BlogController::class, 'index'])->name('blog.index');
 
 Route::post('/enquiry', [Front\EnquiryController::class, 'store'])->name('enquiry.store');
 Route::post('/quote/estimate', [Front\QuoteController::class, 'estimate'])->name('quote.estimate');
@@ -114,5 +116,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 |--------------------------------------------------------------------------
 | Editable one-off pages — must stay last so it never shadows a real route.
 |--------------------------------------------------------------------------
+| Posts and pages share one resolver per the SEO spreadsheet: a blog post
+| now serves at root level ("/{slug}/"), not under "/blog/". The dispatch
+| path is entirely PageController::show() below, which checks Post before
+| Page. "blog.show" exists only so route('blog.show', $post) keeps working
+| in blog templates — same URI pattern as "page", registered after it so it
+| never actually receives a request (Laravel dispatches to the first route
+| that matches a given URI; this one exists purely for name-based reversal).
 */
 Route::get('/{slug}', [Front\PageController::class, 'show'])->name('page');
+Route::get('/{post}', [Front\BlogController::class, 'show'])->name('blog.show');

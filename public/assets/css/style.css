@@ -2198,6 +2198,37 @@ ul { margin: 0; padding: 0; list-style: none; }
    own bottom padding — a full --section-y on top of that left a dead band */
 .section--after-hero { padding-top: clamp(2.5rem, 1.5rem + 2.5vw, 4rem); }
 
+/* long-form content wrapper for generic pages (privacy policy, career, any
+   future one-off page rendered through page.blade.php's content.body blob).
+   Inherits text color from its section (.section--ink sets --text-on-dark);
+   this only adds spacing/hierarchy for raw editor HTML. */
+.prose {
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.prose > :first-child { margin-top: 0; }
+.prose > :last-child { margin-bottom: 0; }
+.prose p { margin: 0 0 1.1em; }
+.prose h2 {
+  margin: 2.25em 0 .75em;
+  font-size: var(--step-2, 1.375rem);
+  line-height: 1.3;
+}
+.prose h3 {
+  margin: 1.75em 0 .6em;
+  font-size: var(--step-1, 1.125rem);
+  line-height: 1.35;
+}
+.prose ul, .prose ol { margin: 0 0 1.1em; padding-left: 1.25em; }
+.prose li { margin: 0 0 .45em; }
+.prose li:last-child { margin-bottom: 0; }
+.prose a { color: var(--gold); text-decoration: underline; text-underline-offset: .15em; }
+.prose a:hover { color: var(--gold-200); }
+.prose b, .prose strong { color: inherit; font-weight: 600; }
+.prose em { color: var(--muted-on-dark); font-style: italic; }
+.prose .btn { margin-top: .5em; }
+
 /* editorial rhythm: a few tiles break the 3-up grid so the page never reads
    as a plain contact sheet. `dense` backfills the slot a tall tile would
    otherwise strand next to it. */
@@ -2278,6 +2309,43 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin: 0;
   font-size: .8125rem;
   color: var(--muted-on-dark);
+}
+
+.pager-site {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+.pager-site__btn {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 .6rem;
+  border: 1px solid var(--line-dark-strong);
+  border-radius: var(--radius-sm, 8px);
+  font-size: .8125rem;
+  color: var(--muted-on-dark);
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.pager-site__btn:hover:not(.is-disabled):not(.is-current) {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.pager-site__btn.is-current {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--ink-950);
+  font-weight: 600;
+}
+.pager-site__btn.is-disabled {
+  opacity: .4;
+  cursor: default;
+}
+.pager-site__dots {
+  color: var(--muted-on-dark);
+  padding: 0 .25rem;
 }
 
 .works-empty {
@@ -3100,6 +3168,41 @@ ul { margin: 0; padding: 0; list-style: none; }
    where the hover card never appears */
 .person__cta { margin-top: 1.35rem; width: 100%; }
 .person__cta[hidden] { display: none; }
+
+/* ---- customer portal: action cards (reuse .step, as a <button>) */
+.portal-action {
+  display: block; width: 100%; text-align: left;
+  font: inherit; color: inherit; background: var(--paper-50); cursor: pointer;
+}
+.portal-action h3 { color: var(--ink-950); }
+
+.portal-note {
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0; text-align: center;
+  font-size: .8125rem; color: var(--muted-on-light);
+}
+.portal-note a { color: var(--gold-ink); text-decoration: underline; text-underline-offset: .15em; }
+
+/* ---- customer portal: dialog content (extends .person/.person__panel) */
+.person__panel--portal { text-align: left; }
+.person__panel--portal .person__tag { text-align: left; }
+.person__panel--portal .person__name { text-align: left; }
+.person__panel--portal .person__blurb { text-align: left; }
+
+.portal-steps {
+  display: grid; gap: 1rem;
+  margin: 1.5rem 0 0; padding: 1.35rem 0 0;
+  border-top: 1px solid var(--line-dark);
+  list-style: none;
+}
+.portal-steps li { display: flex; gap: .85rem; align-items: flex-start; }
+.portal-steps__n {
+  flex: none; display: grid; place-items: center;
+  width: 1.75rem; height: 1.75rem; border-radius: 50%;
+  background: var(--ink-800); border: 1px solid var(--line-dark-strong);
+  color: var(--gold); font-family: var(--font-display); font-size: .8125rem; font-weight: 700;
+}
+.portal-steps b { display: block; color: var(--text-on-dark); font-size: .9375rem; margin-bottom: .15rem; }
+.portal-steps p { margin: 0; color: var(--muted-on-dark); font-size: .8438rem; line-height: 1.6; }
 
 /* --------------------------------------------------------------------------
    30. FAQ hub + Contact page

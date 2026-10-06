@@ -584,6 +584,20 @@ Australia · New Zealand · United Arab Emirates'],
                     'list.empty_text' => ['label' => 'Empty state text', 'type' => 'textarea', 'default' => 'New writing goes up regularly — or ask us directly and we will answer in person.'],
                 ]],
             ],
+
+            // ============================================ privacy-policy
+            'privacy-policy' => [
+                'body' => ['label' => 'Content', 'fields' => [
+                    'body' => ['label' => 'Page body', 'type' => 'html', 'default' => '<p>Privacy policy content.</p>'],
+                ]],
+            ],
+
+            // ==================================================== career
+            'career' => [
+                'body' => ['label' => 'Content', 'fields' => [
+                    'body' => ['label' => 'Page body', 'type' => 'html', 'default' => '<p>Careers content.</p>'],
+                ]],
+            ],
         ];
     }
 }

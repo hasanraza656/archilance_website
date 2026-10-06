@@ -144,7 +144,7 @@
           <h3>Architecture Design Services</h3>
           <p>A broad range of architectural design work — concept, schematic, design development — delivered by highly qualified architects.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', 'architecture-design') }}" aria-label="Architecture Design Services — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', 'architectural-design-services') }}" aria-label="Architecture Design Services — read more"></a>
         </article>
 
         <article class="svc" id="svc-landscape">
@@ -153,7 +153,7 @@
           <h3>Landscape Architectural Services</h3>
           <p>Landscape architecture crafted for sustainability and function — outdoor spaces that harmonise with nature and the building.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', 'landscape-architecture') }}" aria-label="Landscape Architectural Services — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', 'landscape-design-services') }}" aria-label="Landscape Architectural Services — read more"></a>
         </article>
 
         <article class="svc" id="svc-revit">
@@ -162,7 +162,7 @@
           <h3>Revit Drafting Outsourcing</h3>
           <p>Precise, detailed Revit drafting with smart BIM models — seamless collaboration, fewer errors, exceptional quality.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', 'revit-drafting') }}" aria-label="Revit Drafting and BIM Outsourcing — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', 'drafting-in-revit-services') }}" aria-label="Revit Drafting and BIM Outsourcing — read more"></a>
         </article>
 
         <article class="svc" id="svc-permit">
@@ -180,7 +180,7 @@
           <h3>3D Modeling &amp; Rendering</h3>
           <p>Expert 3D models and renders that deliver stunning, realistic visuals — the kind that win the client in the first meeting.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', '3d-modeling-rendering') }}" aria-label="3D Modeling and Rendering — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', '3d-modeling-and-rendering-services') }}" aria-label="3D Modeling and Rendering — read more"></a>
         </article>
 
         <article class="svc" id="svc-animation">
@@ -189,7 +189,7 @@
           <h3>3D Architectural Animation</h3>
           <p>Captivating 3D animations that bring designs to life with dynamic, realistic visual storytelling and cinematic walkthroughs.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', '3d-architectural-animation') }}" aria-label="3D Architectural Animation — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', '3d-architectural-animation-services') }}" aria-label="3D Architectural Animation — read more"></a>
         </article>
 
         <article class="svc" id="svc-scan-to-bim">
@@ -198,7 +198,7 @@
           <h3>Point Cloud to BIM</h3>
           <p>Laser scan and point cloud data converted into accurate, LOD-ready Revit models for renovation and as-built documentation.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', 'point-cloud-to-bim') }}" aria-label="Point Cloud to BIM — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', 'point-cloud-to-bim-services') }}" aria-label="Point Cloud to BIM — read more"></a>
         </article>
 
         <article class="svc" id="svc-interior">
@@ -207,7 +207,7 @@
           <h3>Interior Design Services</h3>
           <p>Interiors designed for atmosphere and function — material palettes, lighting schemes and layouts resolved room by room.</p>
           <span class="svc__more">View service <svg class="ico" aria-hidden="true"><use href="#i-arrow-right"></use></svg></span>
-          <a class="svc__link" href="{{ route('services.show', 'interior-design') }}" aria-label="Interior Design Services — read more"></a>
+          <a class="svc__link" href="{{ route('services.show', 'interior-design-services') }}" aria-label="Interior Design Services — read more"></a>
         </article>
       </div>
     </div>

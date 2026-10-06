@@ -22,8 +22,11 @@ class RedirectController extends ResourceController
     {
         return [
             'from' => ['required', 'string', 'max:255'],
-            'to' => ['required', 'string', 'max:255'],
-            'status' => ['required', 'integer', 'in:301,302,307,308'],
+            // A 410 ("gone") has no destination — it's not a redirect, just a
+            // deliberate "this no longer exists" response — so `to` is only
+            // required for the statuses that actually redirect somewhere.
+            'to' => ['required_unless:status,410', 'nullable', 'string', 'max:255'],
+            'status' => ['required', 'integer', 'in:301,302,307,308,410'],
         ];
     }
 }

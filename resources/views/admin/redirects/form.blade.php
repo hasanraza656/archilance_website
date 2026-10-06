@@ -22,12 +22,13 @@
           </div>
           <div class="field">
             <label for="to">To path or URL</label>
-            <input class="ctrl" type="text" id="to" name="to" value="{{ old('to', $item->to) }}" required placeholder="/services/revit-drafting">
+            <input class="ctrl" type="text" id="to" name="to" value="{{ old('to', $item->to) }}" placeholder="/services/revit-drafting">
+            <p class="field__hint">Leave blank for a 410 — it has no destination.</p>
           </div>
           <div class="field">
             <label for="status">Status code</label>
             <select class="ctrl" id="status" name="status">
-              @foreach([301 => '301 — permanent', 302 => '302 — temporary', 307 => '307 — temporary (keep method)', 308 => '308 — permanent (keep method)'] as $code => $label)
+              @foreach([301 => '301 — permanent', 302 => '302 — temporary', 307 => '307 — temporary (keep method)', 308 => '308 — permanent (keep method)', 410 => '410 — gone'] as $code => $label)
                 <option value="{{ $code }}" @selected(old('status', $item->status ?: 301) == $code)>{{ $label }}</option>
               @endforeach
             </select>

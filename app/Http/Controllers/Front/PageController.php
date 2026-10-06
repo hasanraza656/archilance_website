@@ -117,9 +117,48 @@ class PageController extends Controller
         ]);
     }
 
-    /** Editable one-off pages (privacy policy, terms, anything added later). */
-    public function show(string $slug)
+    public function customerPortal()
     {
+        $page = Page::where('slug', 'customer-portal')->first();
+
+        return view('front.customer-portal', [
+            'page' => $page,
+            'seo' => $this->seoFor($page),
+        ]);
+    }
+
+    /**
+     * Page slugs that are reserved by a dedicated route above (home, about,
+     * services, projects, faq, contact, blog, pricing, customer-portal).
+     * Each of those Page rows is real content storage for its own route's
+     * controller method, not a one-off page — the slug is an internal
+     * identifier, not a URL path, so the catch-all must never resolve one of
+     * these by slug even though the row exists and is published. Without
+     * this, renaming a route's URI (e.g. /pricing -> /pricing-plans) leaves
+     * the OLD path falling through to this catch-all, which would then
+     * happily serve the "pricing" Page row's content at the wrong URL
+     * instead of 404ing (where ApplyRedirects could actually catch it).
+     */
+    protected const RESERVED_SLUGS = [
+        'home', 'about', 'services', 'projects', 'faq', 'contact', 'blog', 'pricing', 'customer-portal',
+    ];
+
+    /**
+     * Editable one-off pages (privacy policy, terms, anything added later) —
+     * and, per the SEO spreadsheet, blog posts too: "posts and pages share
+     * one resolver" now that posts serve at root level instead of /blog/.
+     * Post is checked first since Page::slug and Post::slug are confirmed
+     * non-colliding (verified against the live data before this was built).
+     */
+    public function show(string $slug, BlogController $blog)
+    {
+        abort_if(in_array($slug, self::RESERVED_SLUGS, true), 404);
+
+        $post = Post::where('slug', $slug)->first();
+        if ($post) {
+            return $blog->show($post);
+        }
+
         $page = Page::where('slug', $slug)->where('is_published', true)->firstOrFail();
 
         return view('front.page', [

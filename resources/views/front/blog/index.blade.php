@@ -67,7 +67,7 @@
           @endforeach
         </div>
 
-        <div class="works-more">{{ $posts->links() }}</div>
+        <div class="works-more">{{ $posts->links('vendor.pagination.site') }}</div>
       @endif
     </div>
   </section>

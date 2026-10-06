@@ -12,6 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // EnsureTrailingSlash must run before ApplyRedirects — a request that
+        // gets 301'd to its slash variant here should never also be looked up
+        // against the redirects table (which would waste a DB hit on a path
+        // that's about to change anyway).
+        $middleware->append(\App\Http\Middleware\EnsureTrailingSlash::class);
         $middleware->append(\App\Http\Middleware\ApplyRedirects::class);
 
         $middleware->alias([
