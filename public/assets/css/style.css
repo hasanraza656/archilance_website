@@ -1777,7 +1777,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* --------------------------------------------------------------------------
    19. Coverage
    -------------------------------------------------------------------------- */
-.coverage-grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+/* .faq-grid and .coverage-grid are plain siblings sharing one .shell (the
+   combined "FAQ + coverage" section) — without this, the FAQ accordion's
+   last answer and the coverage heading butt directly against each other
+   with no gap, reading as one collided block. */
+.coverage-grid { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; margin-top: clamp(3rem, 7vw, 5.5rem); }
 @media (min-width: 992px) { .coverage-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } }
 
 .regions { display: grid;
