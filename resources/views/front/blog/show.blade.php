@@ -40,6 +40,8 @@
         {!! $post->body !!}
       </div>
 
+      @include('partials.blog-author', ['author' => $writtenBy])
+
       <div class="works-more">
         <a class="btn-a btn-a--ghost" href="{{ route('blog.index') }}" data-magnetic>
           <svg class="ico" aria-hidden="true"><use href="#i-arrow-left"></use></svg> All articles

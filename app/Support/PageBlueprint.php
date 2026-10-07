@@ -442,6 +442,16 @@ class PageBlueprint
                     ]],
                     'story.cta' => ['label' => 'Link text', 'type' => 'text', 'default' => 'See what the team delivers'],
                 ]],
+                'gulf' => ['label' => 'Gulf presence', 'fields' => [
+                    'gulf.eyebrow' => ['label' => 'Eyebrow', 'type' => 'text', 'default' => 'Regional partner'],
+                    'gulf.heading' => ['label' => 'Heading', 'type' => 'html', 'default' => 'Our Gulf Presence'],
+                    'gulf.text' => ['label' => 'Description', 'type' => 'textarea', 'default' => 'Global BIM Build is Archilance\'s strategic BIM partner and specialised BIM wing, supporting projects across the UAE and KSA. It provides professional BIM modelling, coordination, documentation, and digital construction solutions to help deliver accurate, efficient, and high-quality project outcomes.'],
+                    'gulf.partner_name' => ['label' => 'Partner company name', 'type' => 'text', 'default' => 'Global BIM Build'],
+                    'gulf.partner_tag' => ['label' => 'Partner caption (under logo)', 'type' => 'text', 'default' => 'Global BIM Build'],
+                    'gulf.photo' => ['label' => 'Portrait image', 'type' => 'text', 'default' => 'assets/img/brand/sajjad-hussain.webp'],
+                    'gulf.person_name' => ['label' => 'Person name', 'type' => 'text', 'default' => 'Sajjad Hussain'],
+                    'gulf.person_title' => ['label' => 'Person title', 'type' => 'text', 'default' => 'CEO & Co-Founder'],
+                ]],
                 'values' => ['label' => 'Values', 'fields' => [
                     'values.eyebrow' => ['label' => 'Eyebrow', 'type' => 'text', 'default' => 'How we work'],
                     'values.heading' => ['label' => 'Heading', 'type' => 'html', 'default' => 'Four things we refuse to compromise on'],

@@ -12,12 +12,7 @@ php artisan migrate:fresh --seed     # rebuild + reload all content
 php artisan serve                    # http://127.0.0.1:8000
 ```
 
-## Admin
-
-`/admin` — redirects to the sign-in form when logged out.
-
-    admin@archilance.net
-    f17@AYDS
+for admin /admin
 
 ## What is editable
 

@@ -330,6 +330,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn-a:hover::before { transform: translateY(0); }
 .btn-a:active { transform: translateY(0); }
 
+.btn-a--sm { padding: .65rem 1.25rem; font-size: var(--step--1); }
+
 .btn-a--ghost {
   --btn-bg: transparent;
   --btn-fg: var(--text-on-dark);
@@ -2453,6 +2455,19 @@ ul { margin: 0; padding: 0; list-style: none; }
   pointer-events: none;
 }
 
+/* ---- Gulf presence: partner badge + captioned portrait */
+.gulf-badge { display: flex; align-items: center; gap: 1.1rem; }
+.gulf-badge__ring {
+  flex: none;
+  display: grid; place-items: center;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  background: var(--ink-850);
+}
+.gulf-badge__mark { width: 40px; height: 40px; }
+
 /* What's included */
 .deliver-grid {
   display: grid;
@@ -2533,6 +2548,62 @@ ul { margin: 0; padding: 0; list-style: none; }
 .rel-card h3 { font-size: var(--step-1); margin: 0 0 .5rem; letter-spacing: -.01em; }
 .rel-card p { margin: 0 0 1rem; font-size: var(--step--1); line-height: 1.6; color: var(--muted-on-dark); }
 .rel-card:hover .svc__more .ico { transform: translateX(4px); }
+
+/* ---- blog article author credit box */
+.author-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid var(--gold-200);
+  border-radius: var(--radius-lg);
+  background: var(--gold-100);
+}
+.author-box__id { display: flex; align-items: center; gap: 1.1rem; min-width: 0; }
+.author-box__pic {
+  flex: none;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--ink-900);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.author-box__pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.author-box__ph {
+  width: 100%; height: 100%;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 700; font-size: var(--step-1);
+  color: var(--text-on-dark);
+}
+.author-box__meta { display: flex; flex-direction: column; gap: .4rem; min-width: 0; }
+.author-box__eyebrow {
+  font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gold-ink);
+}
+.author-box__name-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.author-box__name { font-size: var(--step-1); color: var(--ink-950); letter-spacing: -.01em; }
+.author-box__badge {
+  display: inline-flex; align-items: center;
+  padding: .3rem .85rem;
+  border-radius: 100px;
+  background: var(--gold);
+  color: var(--ink-950);
+  font-size: .75rem; font-weight: 600;
+  white-space: nowrap;
+}
+.author-box__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.author-box__actions .btn-a--ghost { --btn-fg: var(--ink-950); --btn-bd: var(--ink-950); }
+.author-box__actions .btn-a--ghost::before { background: var(--ink-950); }
+.author-box__actions .btn-a--ghost:hover { color: var(--gold-100); border-color: var(--ink-950); }
+
+@media (max-width: 540px) {
+  .author-box { flex-direction: column; align-items: flex-start; }
+  .author-box__actions { width: 100%; }
+  .author-box__actions .btn-a { flex: 1; }
+}
 
 /* Listing cards */
 .svc-cards {

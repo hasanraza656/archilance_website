@@ -730,7 +730,8 @@
         "photo": null,
         "parent": "laraib-ijaz",
         "is_leadership": false,
-        "sort": 61
+        "sort": 61,
+        "is_published": false
     },
     {
         "slug": "fatima-faisal",
@@ -747,9 +748,9 @@
     {
         "slug": "amna-rauf",
         "name": "Amna Rauf",
-        "role": "Executive",
-        "team": "exec",
-        "blurb": "Part of the studio leadership.",
+        "role": "Internee",
+        "team": "team",
+        "blurb": "Interning with the studio.",
         "extra": null,
         "photo": null,
         "parent": "laraib-ijaz",

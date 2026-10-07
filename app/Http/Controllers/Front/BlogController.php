@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -56,6 +57,10 @@ class BlogController extends Controller
             'related' => Post::live()->where('id', '!=', $post->id)
                 ->when($post->post_category_id, fn ($q) => $q->where('post_category_id', $post->post_category_id))
                 ->latest('published_at')->limit(3)->get(),
+            // Every article is credited to the same real team member for now —
+            // there's no per-post author assignment yet, just the single
+            // generic admin user on the `posts` table itself.
+            'writtenBy' => TeamMember::where('slug', 'tehreem-puri')->first(),
         ]);
     }
 }

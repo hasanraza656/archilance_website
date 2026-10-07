@@ -52,6 +52,34 @@
     </div>
   </section>
 
+  <!-- ============================== Gulf presence ============================== -->
+  <section class="section section--ink-soft grid-veil" aria-labelledby="gulfHeading">
+    <div class="shell">
+      <div class="split">
+        <div data-reveal="left">
+          <div class="gulf-badge">
+            <span class="gulf-badge__ring" aria-hidden="true">
+              <svg viewBox="0 0 48 48" class="gulf-badge__mark">
+                <text x="24" y="30" text-anchor="middle" font-family="var(--font-display)" font-weight="700" font-size="17" fill="currentColor">GBB</text>
+              </svg>
+            </span>
+            <div>
+              <p class="eyebrow" style="margin-bottom:.35rem">{{ $page->text('gulf.eyebrow') }}</p>
+              <h2 class="h-xl" id="gulfHeading" style="margin:0">{!! $page->text('gulf.heading') !!}</h2>
+            </div>
+          </div>
+          <p style="margin-top:1.5rem">{{ $page->text('gulf.text') }}</p>
+        </div>
+
+        <div class="split__media" data-reveal="right">
+          <img src="{{ asset($page->text('gulf.photo')) }}" width="1000" height="750"
+               alt="{{ $page->text('gulf.person_name') }} — {{ $page->text('gulf.person_title') }}, {{ $page->text('gulf.partner_name') }}"
+               loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================== Values ============================== -->
   <section class="section section--paper grid-veil" aria-labelledby="valuesHeading">
     <div class="shell">
